@@ -27,19 +27,19 @@ export class UserController {
   }
 
   // Precisa de admin para pegar isso
-  @Get(':id')
+  @Get('user/:id')
   findOne(@Param('id') id: string) {
     return this.userService.findOne(+id);
   }
 
   // Precisa de admin ou ser o usuario
-  @Patch(':id')
+  @Patch('user/:id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(+id, updateUserDto);
   }
 
   // Precisa de admin ou ser o usuario
-  @Delete(':id')
+  @Delete('user/:id')
   remove(@Param('id') id: string) {
     return this.userService.remove(+id);
   }
