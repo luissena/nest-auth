@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Req,
+  SetMetadata,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { LoginDTO } from './dto/login.dto';
@@ -12,9 +20,10 @@ export class AuthController {
     return this.authService.login(loginDto);
   }
 
+  @SetMetadata('role', 'admin')
   @UseGuards(AuthGuard)
-  @Get('teste')
-  bilola(@Req() req) {
-    return 'teste';
+  @Get('safe')
+  SafeToUse(@Req() req) {
+    return 'Safe to use';
   }
 }
